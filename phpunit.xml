@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit backupGlobals="false"
+         backupStaticAttributes="false"
+         bootstrap="tests/bootstrap.php"
+         colors="true"
+         convertErrorsToExceptions="true"
+         convertNoticesToExceptions="true"
+         convertWarningsToExceptions="true"
+         processIsolation="false"
+         stopOnFailure="false">
+    <testsuites>
+        <!--
+        <testsuite name="Feature">
+            <directory suffix="Test.php">./tests/Feature</directory>
+        </testsuite>
+        -->
+
+        <testsuite name="Unit">
+            <directory suffix="Test.php">./tests/Unit</directory>
+        </testsuite>
+
+        <testsuite name="API">
+            <directory suffix="Test.php">./tests/Api</directory>
+        </testsuite>
+
+    </testsuites>
+    <filter>
+        <whitelist processUncoveredFilesFromWhitelist="true">
+            <directory suffix=".php">./app</directory>
+            <!--            <exclude>-->
+            <!--                <directory suffix=".php">-->
+            <!--                    ./app/Support/DataProviders-->
+            <!--                </directory>-->
+            <!--            </exclude>-->
+        </whitelist>
+    </filter>
+    <!--    <listeners>-->
+    <!--        <listener class="VCR\PHPUnit\TestListener\VCRTestListener" file="vendor/php-vcr/phpunit-testlistener-vcr/src/VCRTestListener.php" />-->
+    <!--    </listeners>-->
+    <php>
+        <ini name="memory_limit" value="-1"/>
+        <env name="APP_ENV" value="testing"/>
+        <env name="CACHE_DRIVER" value="array"/>
+        <env name="SESSION_DRIVER" value="array"/>
+        <env name="QUEUE_DRIVER" value="sync"/>
+        <env name="MAIL_DRIVER" value="array"/>
+        <env name="DB_CONNECTION" value="test" />
+        <env name="TELESCOPE_ENABLED" value="false" />
+        <env name="PHPUNIT_ALLOW_XDEBUG" value="0" />
+    </php>
+</phpunit>
